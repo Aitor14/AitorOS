@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>AitorOS — Aitor Gómez</title>
+  <meta name="description" content="Portfolio of Aitor Gómez, cybersecurity student at EUNEIZ, built as a desktop that runs in the browser.">
+  <meta name="theme-color" content="#14112b">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2314112b'/%3E%3Cpath d='M32 10l18 7v13c0 12-8 20-18 24-10-4-18-12-18-24V17z' fill='none' stroke='%237cf2c8' stroke-width='4'/%3E%3Cpath d='M25 33l5 5 10-11' fill='none' stroke='%237cf2c8' stroke-width='4' stroke-linecap='round'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!--
+    Hi there, curious visitor. Reading the source is exactly what a good pentester does.
+    CTF challenge 4 (View Source): flag{v13w_s0urc3_4lw4ys}
+  -->
+
+  <div id="boot" aria-hidden="true">
+    <svg class="boot-logo" viewBox="0 0 64 64" aria-hidden="true"><path d="M32 6l20 8v15c0 14-9 23-20 28C21 52 12 43 12 29V14z" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linejoin="round"/><path d="M24 32l6 6 11-12" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    <div class="boot-bar"><span></span></div>
+    <p class="boot-hint">Press any key to skip</p>
+  </div>
+
+  <header id="menubar">
+    <div class="mb-left">
+      <button class="mb-item mb-logo" id="logo-btn" aria-haspopup="true" aria-label="System menu">
+        <svg viewBox="0 0 64 64" aria-hidden="true"><path d="M32 6l20 8v15c0 14-9 23-20 28C21 52 12 43 12 29V14z" fill="none" stroke="currentColor" stroke-width="5" stroke-linejoin="round"/><path d="M24 32l6 6 11-12" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <span class="mb-item mb-app" id="active-app">Finder</span>
+      <button class="mb-item mb-hide-sm" data-menu="file">File</button>
+      <button class="mb-item mb-hide-sm" data-menu="go">Go</button>
+      <button class="mb-item mb-hide-sm" data-menu="help">Help</button>
+    </div>
+    <div class="mb-right">
+      <button class="mb-item" id="spot-btn" aria-label="Search (Ctrl+K)">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M15.5 15.5L21 21" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      </button>
+      <span class="mb-item mb-hide-sm" aria-hidden="true">
+        <svg viewBox="0 0 24 24"><path d="M2 9a15 15 0 0 1 20 0M5.5 12.5a10 10 0 0 1 13 0M9 16a5 5 0 0 1 6 0" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><circle cx="12" cy="19.5" r="1.4" fill="currentColor"/></svg>
+      </span>
+      <span class="mb-item" id="battery" title="Battery">
+        <svg viewBox="0 0 30 16" aria-hidden="true"><rect x="1" y="2" width="24" height="12" rx="3.5" fill="none" stroke="currentColor" stroke-width="1.5" opacity=".6"/><rect x="26.5" y="6" width="2" height="4" rx="1" fill="currentColor" opacity=".6"/><rect id="battery-fill" x="3" y="4" width="20" height="8" rx="2" fill="currentColor"/></svg>
+      </span>
+      <span class="mb-item mb-clock" id="clock"></span>
+    </div>
+  </header>
+
+  <div id="menu-pop" class="menu-pop" role="menu" hidden></div>
+
+  <main id="desktop" aria-label="Desktop">
+    <div id="desk-icons"></div>
+    <div id="windows"></div>
+  </main>
+
+  <nav id="dock" aria-label="Dock"><div class="dock-inner" id="dock-inner"></div></nav>
+
+  <div id="spotlight" hidden>
+    <div class="spot-box" role="dialog" aria-label="Search">
+      <div class="spot-row">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M15.5 15.5L21 21" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        <input id="spot-input" type="text" placeholder="Search apps…" autocomplete="off" spellcheck="false">
+      </div>
+      <ul id="spot-results" role="listbox"></ul>
+    </div>
+  </div>
+
+  <div id="toast" role="status" aria-live="polite"></div>
+
+  <noscript><p style="padding:60px 20px;color:#fff">AitorOS needs JavaScript. Contact: aitorgomezpelaez@gmail.com</p></noscript>
+  <script src="script.js"></script>
+</body>
+</html>
